@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>/board/search</title>
+		<script type="text/javascript">
+			if('[[${message}]]'.length !=0)
+				alert('[[${message}]]')
+		</script>
+</head>
+<body>
+	<h2>파라미터와 redirect 애트리뷰트 연습</h2>
+	<h3>현재 페이지 번호 : <span th:text="${page}"></span> 
+	</h3>
+	<hr/>
+	<h3>테스트용 Form</h3>
+	<!-- action="search" 는 상대경로로 지정.
+	     절대 경로는 /board/search 에 해당됩니다.
+	 -->
+	<form action="search" method="post">
+		<input type="number" name="page" th:value=${pageDto.page}> <!-- 실제 구현시에는 hidden -->
+		<input type="text" name="keyword" th:value=${pageDto.keyword}
+			   placeholder="검색어를 입력하세요.">
+		<button>제출</button>	   
+	</form>
+</body>
+</html>

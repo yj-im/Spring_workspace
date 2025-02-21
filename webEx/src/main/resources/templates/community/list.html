@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- 서버사이드 템플릿엔진 중 타임리프를 사용할 때 아래 속성을 작성합니다. -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>커뮤니티</title>
+</head>
+<body>
+	<h2>애트리뷰트 연습1</h2>
+	<ul>
+		<li>[[${page}]]</li>
+		<li>[[${testDto}]]</li>
+		<li>[[${list}]]</li>
+	</ul>
+	<ul>
+		<li th:text="${page}"></li>
+		<li th:text="${testDto.name}"></li> <!-- null 은 빈 문자열 -->
+		<li th:text="${testDto.age}"></li>
+		<li th:text="${list}"></li>
+		<li>
+		<!-- 타임리프의 for 제어 형식 -->
+			<ul>
+			<!-- li 태그가 반복됩니다.list의 목록개수 만큼 만들어집니다. -->
+				<li th:each="str : ${list}">
+					<span th:text="${str}"></span>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	
+	
+	<a href="/">INDEX</a>
+</body>
+</html>

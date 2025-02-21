@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>연습 문제</title>
+</head>
+<body>
+	<h2>TestDto 의 목록을 저장한 list 애트리뷰트 출력</h2>
+	<table>
+		<tr>
+			<td>성명</td>
+			<td>나이</td>
+			<td>지역</td>
+			<td>성별</td>
+		<tr>
+		<!-- tr 태그를 반복해서 list 에 저장된 모든 dto를 출력 -->
+		<tr th:each=" dto : ${list}">
+			<td th:text="${dto.name}">성명</td>
+			<td th:text="${dto.age}">나이</td>
+			<td th:text="${dto.address}">지역</td>
+			<td th:text="${dto.gender}">성별</td>
+		</tr>
+	</table>
+</body>
+</html>

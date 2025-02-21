@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>글쓰기</h2>
+	<form action="write" method="post">
+	<!-- title,content 에 입력한 값이 전달되는 URL : write
+	     컨트롤러의 write 매핑 save 메소드는 이 2개의 값을 저장.
+	 -->
+		<input type="text" name="title">
+		<input type="text" name="content">
+		<button type="submit">제출</button>
+	</form>
+	<hr/>
+	<h2>테스트</h2>
+	<form action="regist" method="post">
+		<!-- ????  -->
+		<input type="text" name="name">
+		<input type="number" name="age">
+<!-- 	<input type="text" name="address">
+		<input type="text" name="gender"> -->
+		<!-- address, gender 는 사용자가 선택하는 요소 사용합니다. -->
+		<select name="address">
+			<option>서울</option>
+			<option>경기</option>
+			<option>인천</option>
+		</select>
+		<label id="man">
+			<input type="radio" name="gender" value="남자" id="man">
+			남자
+		</label>
+		<label id="woman">
+			<input type="radio" name="gender" value="여자" id="woman">
+			여자
+		</label>
+		<label id="none">
+			<input type="radio" name="gender" value="모름" id="none" checked>
+			모름
+		</label>
+		
+		<button>제출</button>
+	</form>
+</body>
+</html>
+
+
+
+
+

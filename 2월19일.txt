@@ -1,0 +1,13 @@
+
+    * URL 설계와 필요한 작업을 정리하는 예시 (쇼핑몰)
+    
+    화면			GET요청 URL               
+    -------			---------------
+    상품목록           	/item/list	             (attr)-->	view(화면) html 
+    상품상세       		/item/detail           (attr)-->  view(화면) html 
+    로그인	   		login		 화면 -->    POST 요청  --> redirect
+    회원가입		/account/regist       화면 -->    POST 요청  --> redirect
+    장바구니		cart
+    결제			pay
+    마이페이지       		/account/my
+   

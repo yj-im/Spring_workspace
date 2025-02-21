@@ -1,0 +1,17 @@
+Class01@DESKTOP-0CO5278 MINGW64 /c/Class241129/spring_workspace
+$ git init
+
+$ git add demo/
+$ git commit -m "day01 demo"
+
+$ git status   --> add(스테이징) 이력 확인
+$ git log      --> 커밋 이력 확인
+
+$ git add BeanEx/
+$ git commit -m "day02 bean연습"
+
+
+$ git remote add origin https://github.com/sohi-kim/springboot_250217.git
+$ git push -u origin
+
+
