@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>파일업로드 데모 화면2 - 여러개 파일 업로드</h2>
+	<hr>
+	<form action="/galleries" method="post"
+		  enctype="multipart/form-data">
+		  <input type="text" name="title"><br/>
+		  <input type="file" accept="image/*" name="files"><br/>
+		  <input type="file" accept="image/*" name="files"><br/>
+		  <input type="file" accept="image/*" name="files"><br/>
+		  <input type="text" name="writer" value="iclass">
+		  <button type="submit">전송</button>
+		  </form>
+		  <hr/>
+		  <h2>Gallery List</h2>
+		  <p>Gallery 테이블 조회 목록(이미지 포함)</p>
+		  <!-- th:each 2개에서 각각 status 와 i 변수는 for 반복에 대한 상태 (상태변수는 개발자가 지정)
+		  	   상태 변수 속성 index는 0부터, count 는 1부터 시작.
+		  -->
+		  <div th:each="dto,status:${list}">
+        <p>([[${status.count} ]])[[${dto.title }]]</p>
+        <ul style="display: flex;flex-direction: row;margin-bottom:30px;">
+            <th:block th:each="pic,i:${#strings.setSplit(dto.fileNames,',')}">
+        <!--  #strings 는 타임리프 문자열 유틸객체. 문자열을 , 기호로 분리해서 배열로 변환
+              pic 는 배열요소를 1개씩 순서대로 저장. i는 foreach의 상태변수
+        -->
+                <li style="width:200px;height: 200px;">
+                    <img th:src="|@{/upload}/${pic}|"
+                         th:alt="${dto.title}"
+                         width="100%" height="100%" style="object-fit:cover"><br>
+                    <span style="font-size: 0.7em">[[${pic}]]([[${i.index}]])</span>
+                </li>
+            </th:block>
+        </ul>
+    </div>
+		  <ul>
+		  	<li th:if="${dto!=null}" style="width:200px; height:200px;">
+		  	<span>[[${dto.title}]]</span>
+		  	<span th:text="${dto.fileNames}"></span><br>
+		  	<!-- 업로드한 파일을 가져와 보여주기 -->
+		  	<img th:src="|@{/upload}/${dto.fileNames}|"
+		  		 th:alt="${dto.title}" width="100%" height="100%">
+		  	</li>
+		  </ul>
+
+
+</body>
+</html>

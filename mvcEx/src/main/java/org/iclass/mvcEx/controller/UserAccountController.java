@@ -2,6 +2,7 @@ package org.iclass.mvcEx.controller;
 
 import org.iclass.mvcEx.dto.UserAccount;
 import org.iclass.mvcEx.service.UserAccountService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,12 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UserAccountController {
 	private UserAccountService service;
 	
-	// 레이아웃 샘플페이지
-	@GetMapping("/sample")
-	public String sample() {
-		return "sample";
-	}
-	
+
 	
 	
 	@GetMapping("/login")
@@ -53,9 +49,17 @@ public class UserAccountController {
 	public String join() {
 		return "join";
 	}
-	@PostMapping("/join")
-	public String 
 	
+	
+	@PostMapping("/join")
+	// 파라미터가 많을 때 , 변수를 각각 선언하는 것은 비효율적. DTO 클래스를 활용
+	public String list(UserAccount dto) {
+		log.info("파라미터 dto : {} " , dto);
+		log.info("파라미터 : {} , {} , {} , {}, {} " , 
+					dto.getUserid(),dto.getUsername(),dto.getPassword(),dto.getBirth(), dto.getGender(), dto.getEmail());
+		
+		return "redirect:/";
+	}
 
 @GetMapping("/logout")
 public String logout(HttpSession session,RedirectAttributes reAttr) {

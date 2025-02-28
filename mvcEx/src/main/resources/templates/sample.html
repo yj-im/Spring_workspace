@@ -4,12 +4,17 @@
 		layout:decorate="~{layout/layout.html}">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>다운로드 데모 - sample.html</title>
 <link rel="stylesheet" href="/css/test.css"/>
 </head>
 <body>
 	<header layout:fragment="main">
 	<h2>회사소개 and Sample</h2>
+	<h3>다운로드 테스트</h3>
+	<ul th:each="file : ${filenames}">
+		<li><a th:href="|@{download?filename=}${file}|">
+			다운로드 : <span th:text="${file}"></span></a>
+	</ul>
 	</header>
 </body>
 </html>

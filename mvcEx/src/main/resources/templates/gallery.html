@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>파일업로드 데모 화면</h2>
+	<hr>
+	<form action="/gallery" method="post"
+		  enctype="multipart/form-data">
+		  <input type="text" name="title"><br/>
+		  <!-- 파일 선택 다이얼로그에서 파일형식 필터링 -->
+		  <label>파일 하나만 선택 : </label>
+		  <!-- 첫번째 테스트용(db 저장안됨) -->
+		  <input type="file" accept="image/*" name="file"><br/>
+		  <label>여러 파일 한번에 선택 : </label>
+		  <input type="file" accept="image/*" name="files" multiple="multiple"><br/>
+		  <input type="text" name="writer" value="iclass">
+		  <button type="submit">전송</button>
+		  </form>
+		  <hr/>
+		  <h2>Gallery List</h2>
+		  <p>Gallery 테이블 조회 목록(이미지 포함)</p>
+		  <ul>
+		  	<li th:if="${dto!=null}" style="width:200px; height:200px;">
+		  	<span>[[${dto.title}]]</span>
+		  	<span th:text="${dto.fileNames}"></span><br>
+		  	<!-- 업로드한 파일을 가져와 보여주기 -->
+		  	<img th:src="|@{/upload}/${dto.fileNames}|"
+		  		 th:alt="${dto.title}" width="100%" height="100%">
+		  	</li>
+		  </ul>
+
+
+</body>
+</html>
