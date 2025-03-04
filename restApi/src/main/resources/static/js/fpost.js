@@ -4,8 +4,12 @@
 document.getElementById('btnSave').addEventListener('click',sendPost)
 
 function sendPost() {
-	if(!isCheck){
+	if(!isCheck ){
 		alert('사용할 수 없는 아이디 입니다.')
+		return;
+	}
+	if(!isCheck2){
+		alert('사용할 수 없는 이메일 주소 입니다.')
 		return;
 	}
 	

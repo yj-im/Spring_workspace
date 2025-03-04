@@ -36,6 +36,12 @@ public class UserAccountApiController {
 		return ResponseEntity.ok().body(result);
 	}
 	
+	@GetMapping("/email/{email}")
+	public ResponseEntity<?> checkEmail(@PathVariable String email){
+		boolean result = service.validEmail(email);
+		log.info("checkUserid : {}, {}", email, result);
+		return ResponseEntity.ok().body(result);
+	}
 	
 	@PostMapping("/account")  // 무결성 위반이면 badRequest 응답 보내기
 	public ResponseEntity<?> post(@RequestBody UserAccount dto){
